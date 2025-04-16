@@ -1,0 +1,10 @@
+<section>
+    <h2>quiz</h2>
+    <div *ngIf="quizes.length === 0">Loading questions...</div>
+    <div class="project-card" *ngFor="let quiz of quizes">
+      <h3>{{ quiz.question }}</h3>
+      <p>Answer: {{ quiz.correct_answer }}</p>
+      <p>Category: {{ quiz.category }}</p>
+      <p>incorrect answer: {{quiz.incorrect_answers}}</p>
+    </div>
+  </section>
