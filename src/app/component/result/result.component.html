@@ -1,0 +1,52 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0 rounded-lg">
+        <div class="card-header bg-primary text-white text-center py-3">
+          <h2 class="h3 mb-0">Quiz Results</h2>
+        </div>
+        <div class="card-body p-4">
+          <div class="text-center mb-4">
+            <div class="display-4 fw-bold mb-2">{{ score }} / 50</div>
+            <div class="progress mb-3" style="height: 10px;">
+              <div class="progress-bar bg-success" role="progressbar" 
+                  [style.width]="(score / 50 * 100) + '%'" 
+                  [attr.aria-valuenow]="score" [attr.aria-valuemin]="0" 
+                  [attr.aria-valuemax]="50"></div>
+            </div>
+            <p class="lead">{{ feedback }}</p>
+          </div>
+          
+          <div class="mb-4">
+            <label for="username" class="form-label fw-bold">Enter Username:</label>
+            <input
+              [(ngModel)]="username"
+              id="username"
+              placeholder="Your name"
+              class="form-control form-control-lg"
+            />
+          </div>
+          
+          <div class="d-grid gap-2 mb-3">
+            <button
+              (click)="saveScore()"
+              [disabled]="!username.trim()"
+              class="btn btn-primary btn-lg"
+            >
+              Save Score
+            </button>
+          </div>
+          
+          <div class="d-grid">
+            <button
+              (click)="playAgain()"
+              class="btn btn-success btn-lg"
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,39 @@
-<section>
-    <h2>quiz</h2>
-    <div *ngIf="quizes.length === 0">Loading questions...</div>
-    <div class="project-card" *ngFor="let quiz of quizes">
-      <h3>{{ quiz.question }}</h3>
-      <p>Answer: {{ quiz.correct_answer }}</p>
-      <p>Category: {{ quiz.category }}</p>
-      <p>incorrect answer: {{quiz.incorrect_answers}}</p>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0 rounded-lg">
+        <div class="card-header bg-primary text-white text-center py-3">
+          <h2 class="h3 mb-0">Welcome to the Quiz App</h2>
+        </div>
+        <div class="card-body p-4">
+          <div class="mb-4">
+            <label for="categorySelect" class="form-label fw-bold">Select Category:</label>
+            <select [(ngModel)]="selectedCategory" id="categorySelect" class="form-select">
+              <option value="">Any Category</option>
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="difficultySelect" class="form-label fw-bold">Select Difficulty:</label>
+            <select [(ngModel)]="selectedDifficulty" id="difficultySelect" class="form-select">
+              <option value="">Any Difficulty</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              (click)="startQuiz()"
+              class="btn btn-primary btn-lg"
+            >
+              Start Quiz
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</div>

@@ -1,30 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
-interface Quiz {
-  question: string;
-  correct_answer: string;
-  category: string;
-  incorrect_answers: string;
-}
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TriviaService } from '../../services/trivia.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit{
-  quizes: any[] = []; // A place to store our quiz data
+export class HomeComponent implements OnInit {
+  categories: { id: number; name: string }[] = [];
+  selectedCategory: string = '';
+  selectedDifficulty: string = '';
 
-  constructor(private http: HttpClient) {} // Get the phone (HttpClient)
+  constructor(private triviaService: TriviaService, private router: Router) {}
 
-  ngOnInit(): void {
-    // When the page loads, call the API
-    this.http.get('https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=boolean').subscribe(data => {
-      this.quizes = (data as any).results; // Save the data to our quizes list
-      console.log('quizes:', this.quizes); // Check what we got
+  ngOnInit() {
+    this.triviaService.getCategories().subscribe(data => {
+      this.categories = data.trivia_categories;
+    });
+  }
+
+  startQuiz() {
+    this.router.navigate(['/quiz'], {
+      queryParams: {
+        category: this.selectedCategory || undefined,
+        difficulty: this.selectedDifficulty || undefined
+      }
     });
   }
 }
