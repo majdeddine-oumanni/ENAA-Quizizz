@@ -1,59 +1,110 @@
-# ENAAQuizizz
+Enaa Quizizz
+A dynamic quiz application built with Angular 19, using the Open Trivia Database API to fetch trivia questions. Users can select quiz categories and difficulty levels, answer questions with instant validation, view their final score, save scores with a username, and see past scores in a history page. The app also supports light/dark theme switching.
+Features
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+Homepage: Choose a quiz category (e.g., General Knowledge, Science) and difficulty (Easy, Medium, Hard) to start a quiz.
+Quiz: Answer 5 multiple-choice questions one at a time, with instant feedback (green for correct, red for wrong).
+Result: View your final score, get feedback (e.g., "Awesome job!"), save your score with a username, and play again.
+History: See a table of past scores (username, score, date) stored in the browser's local storage.
+Navigation: A navbar links to Home, History, and Settings pages.
 
-## Development server
+Technologies
 
-To start a local development server, run:
+Angular 19: Frontend framework for building the app with standalone components.
+Open Trivia Database API: Provides quiz questions and categories.
+Local Storage: Saves scores and theme preferences in the browser.
+Lodash: Used to shuffle quiz answers for randomization.
+CSS: Custom styles with CSS variables for light/dark themes.
 
-```bash
+Prerequisites
+To run this app, you need:
+
+Node.js (version 18 or higher)
+Angular CLI (install globally with npm install -g @angular/cli)
+
+Setup
+Follow these steps to set up and run the app locally:
+
+Clone the Repository (if you have it on GitHub, or skip if local):
+git clone <https://github.com/majdeddine-oumanni/ENAA-Quizizz.git>
+cd ENAA-Quizizz
+
+
+Install Dependencies:Run this command to install required libraries (e.g., Angular, Lodash):
+npm install
+
+
+Run the App:Start the development server:
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and go to http://localhost:4200.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Usage
 
-```bash
-ng generate component component-name
-```
+Start a Quiz:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+On the homepage, select a category (e.g., "Science") and difficulty (e.g., "Easy") from the dropdowns.
+Click "Start Quiz" to begin.
 
-```bash
-ng generate --help
-```
 
-## Building
+Answer Questions:
 
-To build the project run:
+Answer each question by clicking one of the four answer buttons.
+See instant feedback: correct answers turn green, wrong answers turn red.
+Click "Next Question" to continue, or "See Results" on the last question.
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+View Results:
 
-## Running unit tests
+See your final score (e.g., "30 / 50") and feedback (e.g., "Nice try!").
+Enter a username and click "Save Score" to store it.
+Click "Play Again" to return to the homepage.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
+Check History:
 
-## Running end-to-end tests
+Click "History" in the navbar to see a table of saved scores (username, score, date).
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
+Project Structure
+quiz-app/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── home/          # Homepage for category/difficulty selection
+│   │   │   ├── quiz/          # Quiz with questions and instant validation
+│   │   │   ├── result/        # Final score, feedback, and save score
+│   │   │   ├── history/       # Table of past scores
+│   │   │   ├── navbar/        # Navigation bar
+│   │   ├── services/
+│   │   │   ├── trivia.service.ts  # Handles API calls
+│   │   │   ├── theme.service.ts   # Manages theme state
+│   │   ├── app.component.ts       # Root component
+│   │   ├── app.routes.ts          # Routing configuration
+│   ├── styles.css                 # Global styles with theme variables
+├── README.md                      # This file
+├── package.json                   # Project dependencies and scripts
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contributing
+Want to improve the app? Feel free to:
+
+Fork the repository (if on GitHub).
+Create a new branch (git checkout -b feature/your-feature).
+Make changes and commit (git commit -m "Add your feature").
+Push to your branch (git push origin feature/your-feature).
+Open a pull request.
+
+Suggestions for improvements:
+
+Add a timer for each question.
+Support more question types (e.g., true/false).
+Add error handling for API failures.
+
+
+Open Trivia Database for providing free quiz data.
+Angular for a powerful frontend framework.
+
+author: MajdEddine oumanni
